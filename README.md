@@ -1,6 +1,6 @@
 # SecureUserDefaults
 <p>
-<u><i>It's simple replacement your current syntax :> 'UserDefaults' to 'SecureUserDefaults'</i></u>
+<u><i>It's simple replacement to your current syntax :> 'UserDefaults' to 'SecureUserDefaults'</i></u>
 </p>
 
 <b>Usage</b>
