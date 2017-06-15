@@ -2,7 +2,7 @@
 //  SecureUserDefaults.swift
 //  SecureUserDefaults
 //
-//  Created by Kalpesh on 15/06/17.
+//  Created by Kalpesh Jetani on 15/06/17.
 //  Copyright © 2017 Sigmacoder. All rights reserved.
 //
 
@@ -11,7 +11,7 @@ import Foundation
 final class SecureUserDefaults : NSObject {
     
     deinit {
-        self.syncronize()
+        self.synchronize()
     }
     
     static var standard : SecureUserDefaults = SecureUserDefaults()
@@ -20,6 +20,13 @@ final class SecureUserDefaults : NSObject {
     override init() {
         self.objSecureData = SecureUserDefaults.decodeDataObject()
         super.init()
+    }
+    
+    open func set(_ value: Any?, forKey key: String) {
+        self.setValue(value, forKey: key)
+    }
+    open func removeObject(forKey key: String) {
+        SecureUserDefaults.standard.objSecureData.dictionary.removeValue(forKey: key)
     }
     
     open override func setValue(_ value: Any?, forKey key: String) {
@@ -32,8 +39,9 @@ final class SecureUserDefaults : NSObject {
     open override func value(forKey key: String) -> Any? {
         return SecureUserDefaults.standard.objSecureData.dictionary[key]
     }
-
-    func syncronize() {
+    
+    
+    func synchronize() {
         NSKeyedArchiver.archiveRootObject(self.objSecureData, toFile: SecureUserDefaults.path)
     }
     
@@ -44,26 +52,18 @@ final class SecureUserDefaults : NSObject {
         return SecureDataClass()
     }
     
+    func resetSecureUserDefaults() {
+        
+        let fileManager : FileManager = FileManager.default
+        try? fileManager.removeItem(atPath: SecureUserDefaults.path)
+        objSecureData.dictionary = [:]
+    }
+    
     class var path : String {
         let documentsPath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.cachesDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first
         let path = (documentsPath)! + "/Configuration"
         return path
     }
-    
-    func resetSecureUserDefaults() {
-        
-        let fileManager : FileManager = FileManager.default
-        do {
-            try fileManager.removeItem(atPath: SecureUserDefaults.path)
-            objSecureData.dictionary = [:]
-        }
-        catch
-        {
-            print("Error Removing User Details")
-        }
-    }
-    
-    
 }
 
 fileprivate class SecureDataClass: NSObject, NSCoding {
@@ -88,5 +88,3 @@ fileprivate class SecureDataClass: NSObject, NSCoding {
         aCoder.encode(dictionary, forKey: "SecureDataClass.dictionary")
     }
 }
-
-

@@ -28,7 +28,7 @@ class ViewController: UIViewController {
     @IBAction func buttonSavePressed(_ sender: Any) {
         
         SecureUserDefaults.standard.setValue(textField.text!, forKey: "Data")
-        SecureUserDefaults.standard.syncronize()
+        SecureUserDefaults.standard.synchronize()
         
     }
     
