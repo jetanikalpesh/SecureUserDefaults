@@ -8,7 +8,7 @@
 
 import Foundation
 
-open class SecureUserDefaults : NSObject {
+final class SecureUserDefaults : NSObject {
     
     deinit {
         self.syncronize()
