@@ -9,15 +9,36 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    @IBOutlet weak var textField: UITextField!
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        //textField.text = SecureUserDefaults.standard.value(forKey: "Data") as? String
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
+    }
+    
+    //MARK:- Actions
+    @IBAction func buttonSavePressed(_ sender: Any) {
+        
+        SecureUserDefaults.standard.setValue(textField.text!, forKey: "Data")
+        SecureUserDefaults.standard.syncronize()
+        
+    }
+    
+    @IBAction func buttonLoadPressed(_ sender: Any) {
+        textField.text = SecureUserDefaults.standard.value(forKey: "Data") as? String
+
+    }
+    
+    @IBAction func buttonResetPressed(_ sender: Any) {
+        SecureUserDefaults.standard.resetAllDefaults()
     }
 
 

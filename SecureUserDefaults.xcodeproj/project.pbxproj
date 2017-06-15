@@ -12,6 +12,7 @@
 		0490A01F1EF2624F0087DB98 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0490A01D1EF2624F0087DB98 /* Main.storyboard */; };
 		0490A0211EF2624F0087DB98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0490A0201EF2624F0087DB98 /* Assets.xcassets */; };
 		0490A0241EF2624F0087DB98 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0490A0221EF2624F0087DB98 /* LaunchScreen.storyboard */; };
+		0490A02C1EF262750087DB98 /* SecureUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0490A02B1EF262750087DB98 /* SecureUserDefaults.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		0490A0201EF2624F0087DB98 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0490A0231EF2624F0087DB98 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0490A0251EF2624F0087DB98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0490A02B1EF262750087DB98 /* SecureUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureUserDefaults.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +40,7 @@
 		0490A00D1EF2624F0087DB98 = {
 			isa = PBXGroup;
 			children = (
+				0490A02B1EF262750087DB98 /* SecureUserDefaults.swift */,
 				0490A0181EF2624F0087DB98 /* SecureUserDefaults */,
 				0490A0171EF2624F0087DB98 /* Products */,
 			);
@@ -96,6 +99,7 @@
 				TargetAttributes = {
 					0490A0151EF2624F0087DB98 = {
 						CreatedOnToolsVersion = 8.2;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -138,6 +142,7 @@
 			files = (
 				0490A01C1EF2624F0087DB98 /* ViewController.swift in Sources */,
 				0490A01A1EF2624F0087DB98 /* AppDelegate.swift in Sources */,
+				0490A02C1EF262750087DB98 /* SecureUserDefaults.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
