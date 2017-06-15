@@ -50,7 +50,7 @@ open class SecureUserDefaults : NSObject {
         return path
     }
     
-    func resetAllDefaults() {
+    func resetSecureUserDefaults() {
         
         let fileManager : FileManager = FileManager.default
         do {
