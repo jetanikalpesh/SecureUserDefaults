@@ -38,7 +38,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func buttonResetPressed(_ sender: Any) {
-        SecureUserDefaults.standard.resetAllDefaults()
+        SecureUserDefaults.standard.resetSecureUserDefaults()
     }
 
 
