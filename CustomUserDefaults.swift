@@ -7,8 +7,10 @@
 //
 
 import Foundation
-
-final class SecureUserDefaults : NSObject {
+final class CustomUserDefaults : NSObject {
+    
+    //Warning:-
+    //You are responsible to remove file created on local path
     
     deinit {
         if self.objSecureData.dictionary.count > 0{
@@ -16,39 +18,41 @@ final class SecureUserDefaults : NSObject {
         }
     }
     
-    static var standard : SecureUserDefaults = SecureUserDefaults()
-    private var objSecureData : SecureDataClass
+    private let rootKey : String
+    private let objSecureData : SecureDataClass
+    private let location : String
     
-    override init() {
-        self.objSecureData = SecureUserDefaults.decodeDataObject()
+    init(rootkey:String) {
+        self.rootKey = rootkey
+        location = CustomUserDefaults.path(keyString: rootkey)
+        self.objSecureData = CustomUserDefaults.decodeDataObject(location: location)
         super.init()
     }
     
-    open func set(_ value: Any?, forKey key: String) {
+    func set(_ value: Any?, forKey key: String) {
         self.setValue(value, forKey: key)
     }
-    open func removeObject(forKey key: String) {
-        SecureUserDefaults.standard.objSecureData.dictionary.removeValue(forKey: key)
+    func removeObject(forKey key: String) {
+        self.objSecureData.dictionary.removeValue(forKey: key)
     }
     
-    open override func setValue(_ value: Any?, forKey key: String) {
+    override func setValue(_ value: Any?, forKey key: String) {
         if let value = value{
-            SecureUserDefaults.standard.objSecureData.dictionary[key] = value
+            self.objSecureData.dictionary[key] = value
         }else{
-            SecureUserDefaults.standard.objSecureData.dictionary.removeValue(forKey: key)
+            self.objSecureData.dictionary.removeValue(forKey: key)
         }
     }
-    open override func value(forKey key: String) -> Any? {
-        return SecureUserDefaults.standard.objSecureData.dictionary[key]
+    override func value(forKey key: String) -> Any? {
+        return self.objSecureData.dictionary[key]
     }
-    
     
     func synchronize() {
-        NSKeyedArchiver.archiveRootObject(self.objSecureData, toFile: SecureUserDefaults.path)
+        NSKeyedArchiver.archiveRootObject(self.objSecureData, toFile: location)
     }
     
-    private static func decodeDataObject() -> SecureDataClass {
-        if let objSecureDataClass = NSKeyedUnarchiver.unarchiveObject(withFile: SecureUserDefaults.path) as? SecureDataClass{
+    private class func decodeDataObject(location:String) -> SecureDataClass {
+        if let objSecureDataClass = NSKeyedUnarchiver.unarchiveObject(withFile: location) as? SecureDataClass{
             return objSecureDataClass
         }
         return SecureDataClass()
@@ -57,13 +61,13 @@ final class SecureUserDefaults : NSObject {
     func resetSecureUserDefaults() {
         
         let fileManager : FileManager = FileManager.default
-        try? fileManager.removeItem(atPath: SecureUserDefaults.path)
+        try? fileManager.removeItem(atPath: location)
         objSecureData.dictionary = [:]
     }
     
-    class var path : String {
+    class func path(keyString:String) -> String {
         let documentsPath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.cachesDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first
-        let path = (documentsPath)! + "/Configuration"
+        let path = (documentsPath)! + "/\(keyString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed))"
         return path
     }
 }

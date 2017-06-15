@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		041AC8971EF2A57500EF591E /* CustomUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041AC8961EF2A57500EF591E /* CustomUserDefaults.swift */; };
 		0490A01A1EF2624F0087DB98 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0490A0191EF2624F0087DB98 /* AppDelegate.swift */; };
 		0490A01C1EF2624F0087DB98 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0490A01B1EF2624F0087DB98 /* ViewController.swift */; };
 		0490A01F1EF2624F0087DB98 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0490A01D1EF2624F0087DB98 /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		041AC8961EF2A57500EF591E /* CustomUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomUserDefaults.swift; sourceTree = "<group>"; };
 		0490A0161EF2624F0087DB98 /* SecureUserDefaults.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SecureUserDefaults.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0490A0191EF2624F0087DB98 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0490A01B1EF2624F0087DB98 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -41,6 +43,7 @@
 			isa = PBXGroup;
 			children = (
 				0490A02B1EF262750087DB98 /* SecureUserDefaults.swift */,
+				041AC8961EF2A57500EF591E /* CustomUserDefaults.swift */,
 				0490A0181EF2624F0087DB98 /* SecureUserDefaults */,
 				0490A0171EF2624F0087DB98 /* Products */,
 			);
@@ -141,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0490A01C1EF2624F0087DB98 /* ViewController.swift in Sources */,
+				041AC8971EF2A57500EF591E /* CustomUserDefaults.swift in Sources */,
 				0490A01A1EF2624F0087DB98 /* AppDelegate.swift in Sources */,
 				0490A02C1EF262750087DB98 /* SecureUserDefaults.swift in Sources */,
 			);
@@ -304,6 +308,7 @@
 				0490A02A1EF2624F0087DB98 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
