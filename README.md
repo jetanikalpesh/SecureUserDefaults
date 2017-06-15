@@ -1,14 +1,14 @@
 # SecureUserDefaults
 <p>
-<u><i>It's simple replacement your current syntax :> 'UserDefaults' to 'SecureUserDefaults'<i/><u/>
-<p/>
+<u><i>It's simple replacement your current syntax :> 'UserDefaults' to 'SecureUserDefaults'</i></u>
+</p>
 
-**Usage**
+<b>Usage</b>
 
 <p>To Store value
 
-<code>SecureUserDefaults.standard.setValue("Value", forKey: "Key")<br>
-SecureUserDefaults.standard.syncronize()</code></p>
+<code>SecureUserDefaults.standard.setValue("Value", forKey: "Key")</code></p>
+<p><code>SecureUserDefaults.standard.syncronize()</code></p>
 
 <p>Retrive Value
 
