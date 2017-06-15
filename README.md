@@ -7,8 +7,7 @@
 
 <p>To Store value
 
-<code>SecureUserDefaults.standard.setValue("Value", forKey: "Key")
-
+<code>SecureUserDefaults.standard.setValue("Value", forKey: "Key")<br>
 SecureUserDefaults.standard.syncronize()</code></p>
 
 <p>Retrive Value
